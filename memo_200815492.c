@@ -1,7 +1,8 @@
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
-#include <asm/uacces.h>
+#include <asm/uaccess.h>
 #include <linux/hugetlb.h>
+#include <linux/module.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/fs.h>
@@ -32,13 +33,13 @@ static int escribir_archivo(struct seq_file * archivo, void *v)
     seq_printf(archivo, "*************************************************\n");
     seq_printf(archivo, " Memoria Total  : \t %8lu KB - %8lu MB\n", total_ram, total_ram / 1024);
     seq_printf(archivo, " Memoria Libre  : \t %8lu KB - %8lu MB\n", free_mem, free_mem / 1024);
-    seq_printf(archivo, " Memoria en uso : \t %i %%\n",(free_mem * 180)/total_ram);
+    seq_printf(archivo, " Memoria en uso : \t %i %%\n",(free_mem * 100)/total_ram);
     return 0;
 }
 
-static int at_open_file(struct inode *inode, sttuct file *file)
+static int al_abrir(struct inode *inode, struct file *file)
 {
-    return single_open(file, escribir_archivo,NULL);
+    return single_open(file, escribir_archivo, NULL);
 }
 
 /*
@@ -46,7 +47,7 @@ static int at_open_file(struct inode *inode, sttuct file *file)
 */
 static struct file_operations procedures =
 {
-    .open = at_open_file,
+    .open = al_abrir,
     .read = seq_read
 };
 
@@ -55,7 +56,7 @@ static struct file_operations procedures =
  * Function called when loading the kernel module.
  * Prints my carnet id
  */
-static int init_module(void)
+ int iniciar_modulo(void)
 {
     proc_create("memo_200815492", 0, NULL, &procedures);
     printk(KERN_INFO "Carnet 200815492");
@@ -66,11 +67,11 @@ static int init_module(void)
  * Function called when unloading the kernel module.
  * Prints course name.
  */
-static void cleanup_module(void)
+ void salir_modulo(void)
 {
     remove_proc_entry("memo_200815492", NULL);
     printk(KERN_INFO "Sistemas Operativos 1.\n");
 }
 
-module_init(init_module);
-module_exit(cleanup_module);
+module_init(iniciar_modulo);
+module_exit(salir_modulo);
