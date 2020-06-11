@@ -27,7 +27,7 @@ static int escribir_archivo(struct seq_file * archivo, void *v)
     seq_printf(archivo, "* * Dany Gabriel Hernandez Santos             * *\n");
     seq_printf(archivo, "* *                                           * *\n");
     seq_printf(archivo, "* *                                           * *\n");
-    seq_printf(archivo, "* *        PROYECTO 1 MODULO MEORIA RAM       * *\n");
+    seq_printf(archivo, "* *        PROYECTO 1 MODULO MEMORIA RAM      * *\n");
     seq_printf(archivo, "* *                                           * *\n");
     seq_printf(archivo, "* ********************************************* *\n");
     seq_printf(archivo, "*************************************************\n");
