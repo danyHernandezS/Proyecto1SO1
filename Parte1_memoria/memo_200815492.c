@@ -24,8 +24,8 @@ static int escribir_archivo(struct seq_file * archivo, void *v)
     seq_printf(archivo, "* ********************************************* *\n");
     seq_printf(archivo, "* * Sistemas Operativos 1                     * *\n");
     seq_printf(archivo, "* * Vacaciones 1er Semestre 2020              * *\n");
-    seq_printf(archivo, "* * Dany Gabriel Hernandez Santos             * *\n");
-    seq_printf(archivo, "* *                                           * *\n");
+    seq_printf(archivo, "* * Dany Gabriel Hernandez Santos   200815492 * *\n");
+    seq_printf(archivo, "* * Jorge Lopez                     201314761 * *\n");
     seq_printf(archivo, "* *                                           * *\n");
     seq_printf(archivo, "* *        PROYECTO 1 MODULO MEMORIA RAM      * *\n");
     seq_printf(archivo, "* *                                           * *\n");
@@ -54,12 +54,12 @@ static struct file_operations procedures =
 
 /*
  * Function called when loading the kernel module.
- * Prints my carnet id
+ * Prints  carnets id
  */
  int iniciar_modulo(void)
 {
-    proc_create("memo_200815492", 0, NULL, &procedures);
-    printk(KERN_INFO "Carnet 200815492");
+    proc_create("memo_200815492_201314761", 0, NULL, &procedures);
+    printk(KERN_INFO "Carnets: 200815492 201314761");
     return 0;
 }
 
@@ -69,7 +69,7 @@ static struct file_operations procedures =
  */
  void salir_modulo(void)
 {
-    remove_proc_entry("memo_200815492", NULL);
+    remove_proc_entry("memo_200815492_201314761", NULL);
     printk(KERN_INFO "Sistemas Operativos 1.\n");
 }
 
