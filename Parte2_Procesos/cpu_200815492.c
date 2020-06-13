@@ -21,7 +21,7 @@ static int escribir_archivo(struct seq_file * archivo, void *v)
     seq_printf(archivo, "* *                                           Sistemas Operativos 1                                           * *\n");
     seq_printf(archivo, "* *                                       Vacaciones 1er Semestre 2020                                        * *\n");
     seq_printf(archivo, "* *                               Dany Gabriel Hernandez Santos      200815492                                * *\n");
-    seq_printf(archivo, "* *                               Jorge Lopez                        201314761                                * *\n");
+    seq_printf(archivo, "* *                               Jorge David Lopez Yool             201314761                                * *\n");
     seq_printf(archivo, "* *                                                                                                           * *\n");
     seq_printf(archivo, "* *                                     PROYECTO 1 MODULO LISTADO PROCESOS                                    * *\n");
     seq_printf(archivo, "* *                                                                                                           * *\n");
