@@ -1,0 +1,11 @@
+<h1>Uso de cpu</h1>
+<p style="visibility: hidden;">a</p>
+<p style="visibility: hidden;">b</p>
+<p>Porcentaje de cpu utilizado: <b>{{usado}}%</b></p>
+<div class="columns">
+  <div class="column">
+    <ngx-charts-line-chart [view]="view" showXAxisLabel="true" showYAxisLabel="true" xAxis="true" yAxis="true"
+      xAxisLabel="Tiempo (s)" yAxisLabel="Uso de cpu (%)" [results]="multi">
+    </ngx-charts-line-chart>
+  </div>
+</div>

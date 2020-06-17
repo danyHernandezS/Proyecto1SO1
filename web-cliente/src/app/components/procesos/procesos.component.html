@@ -1,0 +1,63 @@
+<h1>Procesos</h1>
+<p>Procesos en ejecucion: <b>{{ejecucion}}</b></p>
+<p>Procesos suspendidos: <b>{{suspendido}}</b></p>
+<p>Procesos detenidos: <b>{{detenido}}</b></p>
+<p>Procesos zombie: <b>{{zombie}}</b></p>
+<p>Total de procesos: <b>{{total}}</b></p>
+<mat-card>
+    <mat-form-field color="primary" style="width: 500px;">
+        <mat-label>Filtrar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="chrome">
+    </mat-form-field>
+</mat-card>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="pid">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> PID </th>
+        <td mat-cell *matCellDef="let element"> {{element.pid}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+        <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ram">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ram </th>
+        <td mat-cell *matCellDef="let element"> {{element.ram}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="matar">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Matar </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+            <button mat-icon-button (click)="matar(element)">
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="detalle">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Arbol </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+            <button mat-icon-button (click)="detalle(element)">
+                <mat-icon>list</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
