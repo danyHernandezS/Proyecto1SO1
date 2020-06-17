@@ -22,4 +22,5 @@ sudo rmmod memo_200815492
 lsmod
 
 **Consutlar Mensajes de los modulos**
+
 dmesg
