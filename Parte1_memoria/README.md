@@ -24,3 +24,7 @@ lsmod
 **Consutlar Mensajes de los modulos**
 
 dmesg
+
+Se utilizó el **struct sysinfo meminf** para obener la información de la memoria RAM
+
+Con las propiedades **totalram** y **freeram** se logran obtener el total de RAM y la memoria dispoible.
