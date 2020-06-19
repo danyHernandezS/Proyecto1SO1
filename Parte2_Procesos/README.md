@@ -25,3 +25,6 @@ lsmod
 **Consultar mensajes de los modulos**
 
 dmesg
+
+Para obtener el listado de procesos se utilizó el struct **task_struct**
+Para obener los atributos pid, nombre y los hijos
